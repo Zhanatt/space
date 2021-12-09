@@ -1,0 +1,357 @@
+// === FONTS ===
+@font-face {
+    font-family: 'sf-pro-display';
+    src: url(../src/fonts/SF-Pro-Display-Regular.woff2) format('woff2'), url(../src/fonts/SF-Pro-Display-Regular.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'sf-pro-display';
+    src: url(../src/fonts//SF-Pro-Display-Bold.woff2) format('woff2'), url(../src/fonts/SF-Pro-Display-Bold.woff) format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'spaceagecyrillic';
+    src: url(../src/fonts/spaceagecyrillic-regular.woff) format('woff'), url(../src/fonts/spaceagecyrillic-regular.ttf) format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+// === / FONTS ===
+
+// === MIXIN ===
+@mixin main-btn ($btn-ff-size, $btn-lh, $btn-padding, $width-btn){
+    font-size: $btn-ff-size;
+    line-height: $btn-lh;
+    padding: $btn-padding;
+    border: 1px solid #FFFFFF;
+    background-color: transparent;
+    color: $main-color;
+    font-family: $ff-main;
+    text-transform: uppercase;
+    transition: .3s;
+    width: $width-btn;
+    &:hover{
+        background-color: $main-color;
+        color: #000000;
+        transition: .3s;
+    }
+}
+// === / MIXIN ===
+
+// === VRIABLES ===
+$ff-main: 'sf-pro-display', sans-serif;
+$ff-title: 'spaceagecyrillic', sans-serif;
+
+$main-color:#ffffff;
+$subtitle-color:#036cca;
+$activePrice-color:#cb0e0e;
+$second-color:#e5e5e5;
+// === / VRIABLES ===
+
+// === COMMON ===
+.wrapper-outer{
+    position: relative;
+}
+.wrapper-inner{
+    max-width: 1220px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.bg-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+}
+body{
+    font-family: $ff-main;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: normal;
+    color: $main-color;
+}
+a{
+    color: inherit;
+}
+.inner{
+    position: relative;
+    min-height: 100vh;
+    padding: 100px 0;
+}
+// === / COMMON ===
+
+// === HEADER ===
+.header{  
+    &__inner{
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 75px 0 30px;
+    }
+    &__title{
+        font-family: $ff-title;
+        font-size: 60px;
+        span{
+            display: block;
+            font-size: 110px;
+            line-height: 110px;
+        }
+    }
+    &__text{
+        display: flex;
+        column-gap: 42px;
+        padding: 15px 0 50px;
+
+        font-size: 24px;
+        line-height: 29px;
+    }
+    &__btn{
+        @include main-btn(24px, 29px, 15px 136px, none)
+    }
+    &__description{ 
+        display: flex;
+        justify-content: flex-end;
+        column-gap: 50px;
+        margin-bottom: 5%;
+        p{
+            max-width: 165px;
+            width: 100%;
+            font-size: 14px;
+            line-height: 17px;
+        }
+    }
+}
+.menu{
+    &__list{
+        display: flex;
+        column-gap: 30px;
+        flex-wrap: wrap;
+    }
+    &__link{
+        font-size: 18px;
+        line-height: 21px;
+        text-transform: uppercase;
+    }
+}
+.phone-logo{
+    display: flex;
+    column-gap: 22px;
+    margin-right: 134px;
+    &__phone{
+        font-size: 24px;
+        line-height: 29px;
+    }
+    &__logo{
+        background-color: transparent;
+        border: none;
+    }
+}
+// === / HEADER ===
+
+// === ABOUT US ===
+.title{
+    max-width: 600px;
+    width: 100%;
+    font-family: $ff-title;
+    font-size: 48px;
+    line-height: 48px;
+    margin-bottom: 100px;
+}
+.about-us{
+    &__content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}  
+.about-us__item{
+    display: flex;
+    justify-content: space-between;
+    &:not(:last-child){
+        margin-bottom: 150px;
+    }
+    &:nth-child(2){
+        flex-direction: row-reverse;
+    }
+    &-title{
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 36px;
+    }
+    &-subtitle{
+        font-size: 12px;
+        line-height: 14px;
+        text-transform: uppercase;
+        color: $subtitle-color;
+        margin-top: 5px;
+    }
+    &-caption{
+        caption-side: bottom;
+        padding-top: 20px;
+        text-align: left;
+        font-size: 12px;
+        line-height: 14px;
+        align-items: center;
+        &::before{
+            content: '*';
+            margin-right: 8px; 
+        }
+    }
+    &-tr{
+        border: 1px solid $main-color;
+        border-right: none;
+        border-left: none;
+    }
+    &-td{
+        padding: 10px 30px 10px 0;
+        text-align: center;
+    }
+    &-tr:last-child>&-td{
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 43px;  
+        span{
+            display: block;
+            font-size: 14px;
+            line-height: 17px;
+        }
+    }  
+    &-btn{
+        @include main-btn(18px, 21px, 20px 45px, none);
+        
+        margin-top: 50px;
+    }
+}
+.text{
+    display: flex;
+    column-gap: 53px;
+    padding: 30px 0 50px;
+    p{
+        width: 165px;
+    }
+}
+// === / ABOUT US===
+
+// === HOW TO ===
+.how-to{
+    &__box{
+        text-align: center;
+        text{
+            font-size: 18px;
+            line-height: 21px;
+        }
+        circle,
+        text,
+        foreignObject,
+        #self{
+            cursor: pointer;
+            transition: .5s;
+        }
+        g:hover>circle{
+            r: 20px;
+            fill: $subtitle-color;  
+        }
+        g:hover>text{
+            font-size: 36px;
+            line-height: 43px;
+            fill: $subtitle-color; 
+        }
+        g:hover>foreignObject{
+            color: $subtitle-color;
+            font-size: 22px;    
+        }
+        foreignObject{
+            text-align: left;
+        }
+    }
+}
+#self{
+    text-align:right;
+}
+// === / HOW TO ===
+
+// === TO BOOK ===
+.to-book{
+    &__inner{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+// === / TO BOOK ===
+
+// === OFFER ===
+.offer{
+    
+}
+.price-list{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 142px;
+    &__item{
+        text-align: center;
+    }
+    &__content{
+        max-width: 500px;
+        width: 100%;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 38px 132px;
+        border: 1px solid $main-color;
+        margin-bottom: 20px;
+        p{
+            font-size: 24px;
+            line-height: 29px;
+            span{
+                color: $activePrice-color;
+            }
+            &:last-child{
+                position: relative;
+                font-size: 48px;
+                line-height: 57px;
+                span{
+                    position: absolute;
+                    right: -60px;
+                    top: -30px;
+                    font-size: 14px;
+                    line-height: 17px;
+                    color: $main-color;
+                }
+            }
+        }
+    }
+    &__btn{
+        @include main-btn(18px, 21px,20px 140px, 100%);
+
+        border: 1px solid $main-color;
+    }
+}
+.option-block{
+    border: 1px solid $main-color;
+
+}
+// === / OFFER ===
+
+// === FORM ===
+// === / FORM ===
+
+// === FOOTER ===
+// === / FOOTER ===
+
+
